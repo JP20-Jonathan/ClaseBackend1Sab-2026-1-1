@@ -82,10 +82,10 @@ public class SellingSystem {
             quantity = 0;
             state = false;
         } else {
-            System.out.println("ID no encontrado");
+            System.out.println( "ID: " + id + "ID no encontrado");
         }
     }
-
+    
 
     // Metodos Cliente
     
