@@ -17,7 +17,11 @@ public class SellingSystem {
     static String direccion;
     static long telefono;
     static String correo;
-
+    static int actualizarProducto;
+    static int eliminarProducto;
+    static int actualizarDatos;
+    static int eliminarDatos;
+    static int nuevaId;
 
     // Aquí comienza a leer y ejecutar el codigo debido al Main
     // Aquí coloco las funciones que se ejecutaran con la clase SellingSystem
@@ -25,23 +29,65 @@ public class SellingSystem {
 
         createProducts();
         getProducts();
-        System.out.println("Ingrese el ID del producto a actualizar");
-        int id = sc.nextInt();
-        sc.nextLine();
-        updateProducts(id);
-        System.out.println("Ingrese el ID que desea eliminar");
-        id = sc.nextInt();
-        deleteProduct(id);
+        System.out.println("¿Desea actualizar su producto? 1. Sí / 2. No");
+        actualizarProducto = sc.nextInt();
+        if (actualizarProducto == 1){
+            System.out.println("Ingrese el ID del producto que desea actualizar: ");
+            int id = sc.nextInt();
+            sc.nextLine();
+            updateProducts(id);
+        } else if (actualizarProducto == 2){
+            System.out.println("Okay");
+        } else {
+            System.out.println("Por favor ingrese un valor numerico");
+        }
+
+        System.out.println("¿Desea eliminar un producto? 1. Sí / 2. No");
+        eliminarProducto = sc.nextInt();
+        if (eliminarProducto == 1){
+            System.out.println("Ingrese el ID que desea eliminar");
+            id = sc.nextInt();
+
+            if (nuevaId == id) {
+                deleteProduct(id);
+            } else {
+                System.out.println("ID no encontrado");
+            }
+
+        } else if (eliminarProducto == 2) {
+            System.out.println("Okay");
+        } else {
+            System.out.println("Por favor ingrese un valor Numerico");
+        }
+
         createCustomers();
         getCustomers();
-        System.out.println("Ingrese el ID del Cliente a actualizar");
-        idCustomer = sc.nextInt();
-        sc.nextLine();
-        updateCustomers(idCustomer);
-        System.out.println("Ingrese el ID del Cliente a eliminar");
-        idCustomer = sc.nextInt();
-        sc.nextLine();
-        deleteCustomers(idCustomer);
+        System.out.println("¿Desea actualizar los datos del cliente?");
+        actualizarDatos = sc.nextInt();
+        if (actualizarDatos == 1){
+            System.out.println("Ingrese el ID del Cliente a actualizar:");
+            idCustomer = sc.nextInt();
+            sc.nextLine();
+            updateCustomers(idCustomer);
+        } else if (actualizarDatos == 2) {
+            System.out.println("Okay");
+        } else {
+            System.out.println("Por favor ingrese un valor Numerico");
+        }
+
+        System.out.println("¿Desea eliminar los datos del cliente?");
+        eliminarDatos = sc.nextInt();
+        if (eliminarDatos == 1){
+            System.out.println("Ingrese el ID del Cliente a eliminar");
+            idCustomer = sc.nextInt();
+            sc.nextLine();
+            deleteCustomers(idCustomer);
+        } else if (eliminarDatos == 2) {
+            System.out.println("Okay");
+        } else {
+            System.out.println("Por favor Ingrese un valor numerico");
+        }
+
     }
 
     // Metodo Crear productos
@@ -121,6 +167,7 @@ public class SellingSystem {
     // Metodo Crear clientes
     public static void createCustomers(){
 
+        System.out.println("CREAR CLIENTE");
         System.out.println("Ingrese el ID del Cliente");
         idCustomer = sc.nextInt();
         sc.nextLine();
