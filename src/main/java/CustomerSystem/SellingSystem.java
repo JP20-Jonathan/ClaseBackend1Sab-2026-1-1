@@ -22,6 +22,7 @@ public class SellingSystem {
     static int actualizarDatos;
     static int eliminarDatos;
     static int nuevaId;
+    static int resumen;
 
     // Aquí comienza a leer y ejecutar el codigo debido al Main
     // Aquí coloco las funciones que se ejecutaran con la clase SellingSystem
@@ -29,18 +30,30 @@ public class SellingSystem {
 
         createProducts();
         getProducts();
-        System.out.println("¿Desea actualizar su producto? 1. Sí / 2. No");
-        actualizarProducto = sc.nextInt();
-        if (actualizarProducto == 1){
-            System.out.println("Ingrese el ID del producto que desea actualizar: ");
-            int id = sc.nextInt();
-            sc.nextLine();
-            updateProducts(id);
-        } else if (actualizarProducto == 2){
-            System.out.println("Okay");
-        } else {
-            System.out.println("Por favor ingrese un valor numerico");
+        while (true){
+            try {
+                System.out.println("¿Desea actualizar su producto? 1. Sí / 2. No");
+                actualizarProducto = sc.nextInt();
+                if (actualizarProducto == 1){
+                    System.out.println("Ingrese el ID del producto que desea actualizar: ");
+                    int id = sc.nextInt();
+                    sc.nextLine();
+                     //    CONTINUAR ACA correción de errores
+                    updateProducts(id);
+                    break;
+                } else if (actualizarProducto == 2){
+                    System.out.println("Okay");
+                    break;
+                } else {
+                    System.out.println("Por favor ingrese 1. Sí / 2. No");
+                }
+            } catch (Exception e) {
+                System.out.println(" Por favor ingrese un valor numerico");
+                sc.nextLine();
+            }
         }
+
+
 
         System.out.println("¿Desea eliminar un producto? 1. Sí / 2. No");
         eliminarProducto = sc.nextInt();
@@ -93,29 +106,83 @@ public class SellingSystem {
     // Metodo Crear productos
     public static void createProducts() {
 
-            System.out.println("Ingrese el ID del producto");
-            id = sc.nextInt();
+        while (true){
+            try {
+                System.out.println("Ingrese el ID del producto");
+                id = sc.nextInt();
+                break;
+            } catch (Exception e) {
+                System.out.println("Por favor ingrese un numero valido");
+                sc.nextLine();
+            }
+        }
             sc.nextLine();
             System.out.println("Ingrese el nombre del producto");
             description = sc.nextLine();
-            System.out.println("Ingrese el precio del producto");
-            price = sc.nextDouble();
-            sc.nextLine();
-            System.out.println("Ingrese la cantidad");
-            quantity = sc.nextInt();
-            sc.nextLine();
-            System.out.println("Ingrese el estado del producto");
-            state =sc.nextBoolean();
+            while (true) {
+                try {
+                    System.out.println("Ingrese el precio del producto");
+                    price = sc.nextDouble();
+                    sc.nextLine();
+                    break;
+                } catch (Exception e) {
+                    System.out.println("Por favor ingrese un precio valido");
+                    sc.nextLine();
+                }
+            }
+            while (true) {
+                try {
+                    System.out.println("Ingrese la cantidad");
+                    quantity = sc.nextInt();
+                    sc.nextLine();
+                    break;
+                } catch (Exception e) {
+                    System.out.println("Por favor ingrese una cantidad valida");
+                    sc.nextLine();
+                }
+            }
+
+            while (true) {
+                try {
+                    System.out.println("Ingrese el estado del producto");
+                    state =sc.nextBoolean();
+                    break;
+                } catch (Exception e) {
+                    System.out.println("Por favor ingrese True / False");
+                    sc.nextLine();
+                }
+            }
+
         }
 
         // Metodo de Mostrar productos
         public static void getProducts(){
 
-            System.out.println("ID: " + id + "\n" +
-                    "Description: " + description + "\n" +
-                    "Price: " + price + "\n" +
-                    "Quantity " + quantity + "\n" +
-                    "State: " + state + "\n");
+            while (true) {
+                try {
+                    System.out.println("¿Desea ver el resumen? 1. Sí / 2. No");
+                    resumen = sc.nextInt();
+                    sc.nextLine();
+                    if (resumen == 1) {
+                        System.out.println("ID: " + id + "\n" +
+                                "Description: " + description + "\n" +
+                                "Price: " + price + "\n" +
+                                "Quantity " + quantity + "\n" +
+                                "State: " + state + "\n");
+                        break;
+
+                    } else if (resumen == 2) {
+                        System.out.println("Okay");
+                        break;
+                    } else {
+                        System.out.println("Por favor ingrese 1. Sí / 2. No");
+                    }
+                } catch (Exception e) {
+                    System.out.println("Por favor ingrese un número válido");
+                    sc.nextLine();
+                }
+            }
+
         }
 
         // Metodo de Actualizar productos
