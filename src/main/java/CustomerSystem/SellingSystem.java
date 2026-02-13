@@ -23,6 +23,7 @@ public class SellingSystem {
     static int eliminarDatos;
     static int nuevaId;
     static int resumen;
+    static int idNueva;      // QUEDE ACÁ 
 
     // Aquí comienza a leer y ejecutar el codigo debido al Main
     // Aquí coloco las funciones que se ejecutaran con la clase SellingSystem
@@ -36,11 +37,15 @@ public class SellingSystem {
                 actualizarProducto = sc.nextInt();
                 if (actualizarProducto == 1){
                     System.out.println("Ingrese el ID del producto que desea actualizar: ");
-                    int id = sc.nextInt();
+                    idNueva = sc.nextInt();
                     sc.nextLine();
-                     //    CONTINUAR ACA correción de errores
-                    updateProducts(id);
-                    break;
+                    if (idNueva == id){
+                        int id = sc.nextInt();
+                        sc.nextLine();
+                        updateProducts(id);
+                    } else {
+                        System.out.println("No se encontró el ID");
+                    } // POSIBLE BREAK
                 } else if (actualizarProducto == 2){
                     System.out.println("Okay");
                     break;
@@ -204,7 +209,31 @@ public class SellingSystem {
             sc.nextBoolean();
 
         } else {
+            int intentar;
             System.out.println("Producto no encontrado");
+            while (true) {
+                try {
+                    System.out.println("¿Desea volverlo a intentar?");
+                    intentar = sc.nextInt();
+                    sc.nextLine();
+                    if (intentar == 1) {
+                        System.out.println("Ingrese el ID del producto que desea actualizar");
+                        nuevaId = sc.nextInt();
+                        sc.nextLine();
+                        if (nuevaId == id) {
+                            System.out.println("Cambios subidos, todo esta bien");
+                        } else {
+                            System.out.println("El ID no existe");
+                        }
+                    } else if (intentar == 2) {
+                        System.out.println("Okay");
+                    } else {
+                        System.out.println("Por favor ingrese un valor valido");
+                    }
+                } catch (Exception e) {
+                    System.out.println("Por favor ingrese un valor numerico");
+                }
+            }
         }
     }
 
