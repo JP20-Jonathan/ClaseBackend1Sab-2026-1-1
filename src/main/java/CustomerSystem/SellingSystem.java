@@ -31,32 +31,7 @@ public class SellingSystem {
 
         createProducts();
         getProducts();
-        while (true){
-            try {
-                System.out.println("¿Desea actualizar su producto? 1. Sí / 2. No");
-                actualizarProducto = sc.nextInt();
-                if (actualizarProducto == 1){
-                    System.out.println("Ingrese el ID del producto que desea actualizar: ");
-                    idNueva = sc.nextInt();
-                    sc.nextLine();
-                    if (idNueva == id){
-                        int id = sc.nextInt();
-                        sc.nextLine();
-                        updateProducts(id);
-                    } else {
-                        System.out.println("No se encontró el ID");
-                    } // POSIBLE BREAK
-                } else if (actualizarProducto == 2){
-                    System.out.println("Okay");
-                    break;
-                } else {
-                    System.out.println("Por favor ingrese 1. Sí / 2. No");
-                }
-            } catch (Exception e) {
-                System.out.println(" Por favor ingrese un valor numerico");
-                sc.nextLine();
-            }
-        }
+        updateProducts(id);
 
 
 
@@ -192,21 +167,50 @@ public class SellingSystem {
 
         // Metodo de Actualizar productos
     public static void updateProducts(int findId) {
+        while (true){
+            try {
+                System.out.println("¿Desea actualizar su producto? 1. Sí / 2. No");
+                actualizarProducto = sc.nextInt();
+                if (actualizarProducto == 1){
+
+                    System.out.println("Ingrese el ID del producto que desea actualizar");
+                    idNueva = sc.nextInt();
+                    sc.nextLine();
+                    if (idNueva == id){
+                        System.out.println("Ingrese el nuevo ID del producto");
+                        id = sc.nextInt();
+                        sc.nextLine();
+                        System.out.println("Ingrese el nombre del producto");
+                        description = sc.nextLine();
+                        System.out.println("Ingrese el precio del producto");
+                        price = sc.nextDouble();
+                        sc.nextLine();
+                        System.out.println("Ingrese la cantidad");
+                        quantity = sc.nextInt();
+                        sc.nextLine();
+                        System.out.println("Ingrese el estado del producto");
+                        sc.nextBoolean();
+                    } else {
+                        System.out.println("No se encontró el ID");
+                    }
+
+                    // CONTINUAR ESTRUCTURA DEL IF 
+
+                    }  // POSIBLE BREAK
+                } else if (actualizarProducto == 2){
+                    System.out.println("Okay");
+                    break;
+                } else {
+                    System.out.println("Por favor ingrese 1. Sí / 2. No");
+                }
+            } catch (Exception e) {
+                System.out.println(" Por favor ingrese un valor numerico");
+                sc.nextLine();
+            }
+        }
 
         if (findId == id) {
-            System.out.println("Ingrese el ID del producto");
-            id = sc.nextInt();
-            sc.nextLine();
-            System.out.println("Ingrese el nombre del producto");
-            description = sc.nextLine();
-            System.out.println("Ingrese el precio del producto");
-            price = sc.nextDouble();
-            sc.nextLine();
-            System.out.println("Ingrese la cantidad");
-            quantity = sc.nextInt();
-            sc.nextLine();
-            System.out.println("Ingrese el estado del producto");
-            sc.nextBoolean();
+
 
         } else {
             int intentar;
